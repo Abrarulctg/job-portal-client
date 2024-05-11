@@ -10,7 +10,7 @@ const HowItWorks = () => {
             <h1 className='text-3xl lg:text-5xl font-ubuntu font-extrabold '>Follow Easy Four Steps</h1>
             <div className='flex justify-center'>
                 <p className='max-w-lg text-center'>
-                    "Discover your dream job with ease on job-portal-abrar. Just follow our simple four-step process: Sign up, Explore, Apply, and Track. Your next career move is just a few clicks away!"</p>
+                    Discover your dream job with ease on job-portal-abrar. Just follow our simple four-step process: Sign up, Explore, Apply, and Track. Your next career move is just a few clicks away!</p>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                 <div className="shadow-lg rounded p-6 how-it-work-card">

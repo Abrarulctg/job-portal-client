@@ -1,4 +1,4 @@
-import homeBanner from '../../assets/home-banner.svg';
+import homeBanner from '../../../assets/home-banner.svg';
 
 const Banner = () => {
     return (

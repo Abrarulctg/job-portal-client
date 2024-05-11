@@ -7,12 +7,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Root from './components/Root/Root.jsx';
-import Home from './components/pages/Home.jsx';
 import NotFound from './components/pages/NotFound.jsx';
 import Login from './components/pages/Login.jsx';
 import Register from './components/pages/Register.jsx';
 import AuthProvider, { AuthContext } from './components/AuthProvider/AuthProvider.jsx';
 import UserProfile from './components/pages/UserProfile.jsx';
+import Home from './components/pages/Home/Home.jsx';
 
 
 const router = createBrowserRouter([
