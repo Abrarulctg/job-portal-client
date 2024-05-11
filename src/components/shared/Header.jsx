@@ -3,16 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     const navLinks = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/allJobs">All Jobs</NavLink></li>
-        <li><NavLink to="/myJobs">My Jobs</NavLink></li> {/* Conditional */}
-        <li><NavLink to="/appliedJobs">Applied Jobs</NavLink></li> {/* Conditional */}
-        <li><NavLink to="/addJob">Add a Job</NavLink></li> {/* Conditional */}
-        <li><NavLink to="/blogs">Blogs</NavLink></li>
-        <li><NavLink to="/userProfile">User Profile</NavLink></li>
+        <li className='mr-2'><NavLink to="/">Home</NavLink></li>
+        <li className='mr-2'><NavLink to="/allJobs">All Jobs</NavLink></li>
+        <li className='mr-2'><NavLink to="/myJobs">My Jobs</NavLink></li> {/* Conditional */}
+        <li className='mr-2'><NavLink to="/appliedJobs">Applied Jobs</NavLink></li> {/* Conditional */}
+        <li className='mr-2'><NavLink to="/addJob">Add a Job</NavLink></li> {/* Conditional */}
+        <li className='mr-2'><NavLink to="/blogs">Blogs</NavLink></li>
+        <li className='mr-2'><NavLink to="/userProfile">User Profile</NavLink></li>
     </>
     return (
-        <div>
+        <div className='max-w-6xl mx-auto'>
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -24,7 +24,7 @@ const Header = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <NavLink to="/">Job Portal</NavLink>
+                    <NavLink to="/" className="text-2xl font-extrabold">Job <span className="text-[#2847FF]">Portal</span> </NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
