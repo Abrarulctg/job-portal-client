@@ -12,6 +12,7 @@ import NotFound from './components/pages/NotFound.jsx';
 import Login from './components/pages/Login.jsx';
 import Register from './components/pages/Register.jsx';
 import AuthProvider, { AuthContext } from './components/AuthProvider/AuthProvider.jsx';
+import UserProfile from './components/pages/UserProfile.jsx';
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/userProfile",
+        element: <UserProfile></UserProfile>
       },
       {
         path: "/login",

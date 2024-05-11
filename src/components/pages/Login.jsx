@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Helmet } from "react-helmet";
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { FaFacebook, FaGithub, FaGoogle, FaRegEye, FaRegEyeSlash, FaTwitter } from "react-icons/fa";
+import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Bounce, ToastContainer, toast } from 'react-toastify';
-import { signInWithPopup } from 'firebase/auth';
 import { AuthContext } from '../AuthProvider/AuthProvider';
+import googleIcon from '../../assets/google.png';
+import avaterImg from '../../assets/male-avatar.json';
+import Lottie from 'react-lottie';
 
 const Login = () => {
-    const { signInUser, signInWithGoogle, signInWithGithub, signInWithFacebook, signInWithTwitter } = useContext(AuthContext);
+    const { signInUser, signInWithGoogle } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -75,7 +77,6 @@ const Login = () => {
     }
 
     // //Github Sign in 
-
     // const handleGithubSignIn = () => {
     //     signInWithGithub()
     //         .then(() => {
@@ -88,31 +89,17 @@ const Login = () => {
     // }
 
 
-    // //Facebook Sign in
-    // const handleFacebookLogin = () => {
-    //     signInWithFacebook()
-    //         .then(() => {
-    //             successToast();
-    //             navigate(from);
-    //         })
-    //         .catch(err => {
-    //             errorToast(err.message)
-    //         })
-    // }
+    // console.log(avaterImg)
 
 
-    // //Handle Twitter Login
-    // const handleTwitterLogin = () => {
-    //     signInWithTwitter()
-    //         .then((res) => {
-    //             successToast();
-    //             navigate(from);
-    //             // console.log(res.user)
-    //         })
-    //         .catch(err => {
-    //             errorToast(err.message)
-    //         })
-    // }
+    const avater = {
+        loop: true,
+        autoplay: true,
+        animationData: avaterImg,
+        rendererSettings: {
+            preserveAspectRatio: "xMidYMid slice"
+        }
+    };
 
     return (
         <div>
@@ -125,6 +112,12 @@ const Login = () => {
             <div className="hero">
                 <div className="w-full lg:w-2/5 md:w-3/4 my-10">
                     <div className="card shrink-0 w-full shadow-2xl bg-base-100 pb-8">
+                        {/* <img src={avaterImg} alt="" /> */}
+                        <Lottie
+                            options={avater}
+                            height={200}
+                            width={200}
+                        />
                         <h1 className='text-center text-2xl font-bold text-[#2847FF] mt-8'>Please Login</h1>
 
                         <form onSubmit={handleLogin} className="card-body">
@@ -147,13 +140,20 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='text-center mb-4'>New to Abrar Estate? Please <NavLink to="/register" className="font-[500] text-[#2847FF]">Register</NavLink></p>
-                        <button onClick={handleGoogleLogin} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaGoogle />
+
+                        <div>
+                            <div className="flex flex-col w-full">
+                                <div className="divider">OR</div>
+                            </div>
+                        </div>
+                        <button onClick={handleGoogleLogin} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'>
+                            {/* <FaGoogle /> */}
+                            <img src={googleIcon} className='w-5' alt="" />
                             Signin with Google</button>
                         {/* <button onClick={handleGithubSignIn} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaGithub />
                             Signin with GitHub</button> */}
-                        {/*                        
-                        <button onClick={handleFacebookLogin} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaFacebook />
-                            Signin with Facebook</button> */}
+
+
 
                     </div>
                 </div>

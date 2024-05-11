@@ -1,0 +1,23 @@
+.how-it-work-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.how-it-work-card:hover {
+    background-color: #2847FF;
+    transition: .4s;
+    color: white;
+}
+
+.how-it-work-card:hover .searchIcon {
+    color: #2847FF;
+    background-color: #fff;
+    transition: .4s;
+}
+
+.searchIcon {
+    color: white;
+    margin-bottom: 10px;
+}
+
+/* text-white hover:text-[#2847FF]  */

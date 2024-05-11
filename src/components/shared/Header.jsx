@@ -53,7 +53,7 @@ const Header = () => {
                                 <div className='flex flex-col'>
                                     <p className='mb-3  text-[#ff9123] font-bold p-3 rounded-xl'>{user.displayName}</p>
                                     {/* <Link to="/myAccount"><button className='mb-3 bg-[#AFC4DD] text-[#000] p-3 rounded-xl'>My Account</button></Link> */}
-                                    <NavLink to="/userProfile">User Profile</NavLink>
+                                    <NavLink to="/userProfile" className='mb-3 bg-[#AFC4DD] text-[#000] p-3 rounded-xl'>User Profile</NavLink>
 
                                     <button onClick={handleSignOut} className='mb-3 btn btn-success text-[#000] p-3 rounded-xl'>Logout</button>
 
