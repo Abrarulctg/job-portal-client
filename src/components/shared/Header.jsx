@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../AuthProvider/AuthProvider';
+import { Tooltip } from 'react-tooltip';
 
 const Header = () => {
+    const { user } = useContext(AuthContext)
     const navLinks = <>
         <li className='mr-2'><NavLink to="/">Home</NavLink></li>
         <li className='mr-2'><NavLink to="/allJobs">All Jobs</NavLink></li>
@@ -11,6 +14,8 @@ const Header = () => {
         <li className='mr-2'><NavLink to="/blogs">Blogs</NavLink></li>
         <li className='mr-2'><NavLink to="/userProfile">User Profile</NavLink></li>
     </>
+
+
     return (
         <div className='max-w-6xl mx-auto'>
             <div className="navbar bg-base-100">
@@ -32,7 +37,30 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login"><a className="btn">Login</a></Link>
+                    {user ? <>
+                        <div>
+                            <a id="clickable">
+                                <div className='w-10 h-10'>
+                                    <img className='rounded-full w-16 h-10 mr-2 bg-white p-1 border border-red-400' src={user.photoURL || "https://i.ibb.co/XX4DwkF/default-user.webps"} alt="" />
+                                </div>
+                            </a>
+                            {/* bg-[#AFC4DD] */}
+                            <Tooltip className='z-9999' anchorSelect="#clickable" clickable>
+                                <div className='flex flex-col'>
+                                    <p className='mb-3  text-[#ff9123] font-bold p-3 rounded-xl'>{user.displayName}</p>
+                                    <Link to="/addTouristSpot"><button className='mb-3 btn btn-info text-[#000] p-3 rounded-xl'>Add Tourist Spot</button></Link>
+                                    <Link to="/myAccount"><button className='mb-3 bg-[#AFC4DD] text-[#000] p-3 rounded-xl'>My Account</button></Link>
+                                    <button onClick={handleSignOut} className='mb-3 btn btn-success text-[#000] p-3 rounded-xl'>Logout</button>
+                                </div>
+                            </Tooltip>
+                        </div>
+                    </>
+                        : <>
+                            <Link className='btn btn-success text-white' to="/login">Login</Link>
+                            <Link className='btn btn-success text-white ml-4' to="/register">Register</Link>
+                        </>
+
+                    }
                 </div>
             </div>
         </div>

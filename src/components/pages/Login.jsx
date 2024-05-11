@@ -147,11 +147,11 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='text-center mb-4'>New to Abrar Estate? Please <NavLink to="/register" className="font-[500] text-[#2847FF]">Register</NavLink></p>
-                        {/* <button onClick={handleGoogleLogin} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaGoogle />
+                        <button onClick={handleGoogleLogin} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaGoogle />
                             Signin with Google</button>
-                        <button onClick={handleGithubSignIn} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaGithub />
-                            Signin with GitHub</button>
-                       
+                        {/* <button onClick={handleGithubSignIn} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaGithub />
+                            Signin with GitHub</button> */}
+                        {/*                        
                         <button onClick={handleFacebookLogin} className='btn btn-ghost border border-[#002366] font-bold hover:text-white hover:bg-[#002366] mx-10 my-2'><FaFacebook />
                             Signin with Facebook</button> */}
 

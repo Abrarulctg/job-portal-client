@@ -38,12 +38,12 @@ const AuthProvider = ({ children }) => {
 
 
 
-    // // Google sign in
-    // const googleProvider = new GoogleAuthProvider();
-    // const signInWithGoogle = () => {
-    //     setLoading(true)
-    //     return signInWithPopup(auth, googleProvider);
-    // }
+    // Google sign in
+    const googleProvider = new GoogleAuthProvider();
+    const signInWithGoogle = () => {
+        setLoading(true)
+        return signInWithPopup(auth, googleProvider);
+    }
 
     // // Github Sign in
     // const githubProvider = new GithubAuthProvider;
@@ -89,9 +89,9 @@ const AuthProvider = ({ children }) => {
         signInUser,
         updateUserNamePhoto,
         signInWithGoogle,
-        signInWithGithub,
-        signInWithFacebook,
-        signInWithTwitter,
+        // signInWithGithub,
+        // signInWithFacebook,
+        // signInWithTwitter,
         saveUserProfileOnRegister,
         logOut,
     }
