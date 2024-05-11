@@ -60,19 +60,19 @@ const Login = () => {
     }
 
 
-    // // Google Sign in
-    // const handleGoogleLogin = () => {
-    //     signInWithGoogle()
-    //         .then(() => {
-    //             successToast()
-    //             navigate(from)
-    //             // console.log(res.user)
-    //         })
-    //         .catch(err => {
-    //             errorToast(err.message);
-    //             // console.log(err.message);
-    //         });
-    // }
+    // Google Sign in
+    const handleGoogleLogin = () => {
+        signInWithGoogle()
+            .then(() => {
+                successToast()
+                navigate(from)
+                // console.log(res.user)
+            })
+            .catch(err => {
+                errorToast(err.message);
+                // console.log(err.message);
+            });
+    }
 
     // //Github Sign in 
 

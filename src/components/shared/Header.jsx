@@ -4,7 +4,7 @@ import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Tooltip } from 'react-tooltip';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const navLinks = <>
         <li className='mr-2'><NavLink to="/">Home</NavLink></li>
         <li className='mr-2'><NavLink to="/allJobs">All Jobs</NavLink></li>
@@ -12,9 +12,13 @@ const Header = () => {
         <li className='mr-2'><NavLink to="/appliedJobs">Applied Jobs</NavLink></li> {/* Conditional */}
         <li className='mr-2'><NavLink to="/addJob">Add a Job</NavLink></li> {/* Conditional */}
         <li className='mr-2'><NavLink to="/blogs">Blogs</NavLink></li>
-        <li className='mr-2'><NavLink to="/userProfile">User Profile</NavLink></li>
     </>
 
+    const handleSignOut = () => {
+        logOut()
+            .then(res => console.log("Sign Out Successful", res))
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className='max-w-6xl mx-auto'>
@@ -48,9 +52,11 @@ const Header = () => {
                             <Tooltip className='z-9999' anchorSelect="#clickable" clickable>
                                 <div className='flex flex-col'>
                                     <p className='mb-3  text-[#ff9123] font-bold p-3 rounded-xl'>{user.displayName}</p>
-                                    <Link to="/addTouristSpot"><button className='mb-3 btn btn-info text-[#000] p-3 rounded-xl'>Add Tourist Spot</button></Link>
-                                    <Link to="/myAccount"><button className='mb-3 bg-[#AFC4DD] text-[#000] p-3 rounded-xl'>My Account</button></Link>
+                                    {/* <Link to="/myAccount"><button className='mb-3 bg-[#AFC4DD] text-[#000] p-3 rounded-xl'>My Account</button></Link> */}
+                                    <NavLink to="/userProfile">User Profile</NavLink>
+
                                     <button onClick={handleSignOut} className='mb-3 btn btn-success text-[#000] p-3 rounded-xl'>Logout</button>
+
                                 </div>
                             </Tooltip>
                         </div>
