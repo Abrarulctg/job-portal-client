@@ -76,20 +76,6 @@ const Login = () => {
             });
     }
 
-    // //Github Sign in 
-    // const handleGithubSignIn = () => {
-    //     signInWithGithub()
-    //         .then(() => {
-    //             successToast()
-    //             navigate(from)
-    //         })
-    //         .catch(err => {
-    //             errorToast(err.message);
-    //         })
-    // }
-
-
-    // console.log(avaterImg)
 
 
     const avater = {

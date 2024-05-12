@@ -13,6 +13,8 @@ import Register from './components/pages/Register.jsx';
 import AuthProvider, { AuthContext } from './components/AuthProvider/AuthProvider.jsx';
 import UserProfile from './components/pages/UserProfile.jsx';
 import Home from './components/pages/Home/Home.jsx';
+import AddJob from './components/pages/AddJob/AddJob.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 
 
 const router = createBrowserRouter([
@@ -24,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/addJob",
+        element: <PrivateRoute><AddJob></AddJob></PrivateRoute>
       },
       {
         path: "/userProfile",

@@ -5,7 +5,7 @@ import JobCard from './Home/JobCard';
 
 const JobCategory = () => {
     return (
-        <div className='text-center space-y-4'>
+        <div className='text-center space-y-4' id="jobsCategory">
             <p className='font-ubuntu text-[#2847FF]'>Jobs Category</p>
             <h1 className='text-3xl lg:text-5xl font-ubuntu font-extrabold '>Choose Your Desired Category</h1>
             <div className='flex justify-center'>
