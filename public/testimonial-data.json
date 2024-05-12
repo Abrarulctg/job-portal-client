@@ -1,0 +1,58 @@
+[
+    {
+        "employee_name": "Emily Johnson",
+        "job_title": "Software Engineer",
+        "testimonial": "Working here has been an incredible experience. The team is supportive, the projects are challenging, and the company culture fosters growth and collaboration.",
+        "rating": 5,
+        "photo": "https://i.ibb.co/h8z71f6/r-user2.jpg",
+        "duration_with_us": "3 years"
+    },
+    {
+        "employee_name": "Michael Smith",
+        "job_title": "Marketing Specialist",
+        "testimonial": "I've been with this company for three years now, and I couldn't be happier. The leadership is transparent, the work is rewarding, and there's always room for innovation.",
+        "rating": 4.5,
+        "photo": "https://i.ibb.co/KGg1Jp2/images-8.jpg",
+        "duration_with_us": "3 years"
+    },
+    {
+        "employee_name": "Sarah Martinez",
+        "job_title": "Customer Service Representative",
+        "testimonial": "This company truly cares about its employees and customers. I've never felt more valued and supported in my role. It's a pleasure to be a part of such a positive team.",
+        "rating": 5,
+        "photo": "https://i.ibb.co/zV4bP22/images-9.jpg",
+        "duration_with_us": "2 years"
+    },
+    {
+        "employee_name": "David Thompson",
+        "job_title": "HR Manager",
+        "testimonial": "As someone who oversees HR, I can confidently say this company prioritizes employee well-being and professional development. It's rewarding to be a part of such a progressive organization.",
+        "rating": 4.8,
+        "photo": "https://i.ibb.co/gy3Lb2g/images-6.jpg",
+        "duration_with_us": "4 years"
+    },
+    {
+        "employee_name": "Jessica Lee",
+        "job_title": "Product Manager",
+        "testimonial": "My experience at this company has been nothing short of amazing. The leadership team is incredibly supportive, and there's a real sense of camaraderie among colleagues. I've grown both personally and professionally during my time here.",
+        "rating": 4.9,
+        "photo": "https://i.ibb.co/SvQ1V9R/girl-user.jpg",
+        "duration_with_us": "5 years"
+    },
+    {
+        "employee_name": "Daniel Brown",
+        "job_title": "Sales Executive",
+        "testimonial": "I've been with this company for over two years now, and it's been an incredible journey. The company's commitment to excellence is evident in everything we do, and the opportunities for growth and advancement are limitless.",
+        "rating": 4.7,
+        "photo": "https://i.ibb.co/7GzzqjQ/images-11.jpg",
+        "duration_with_us": "2.5 years"
+    },
+    {
+        "employee_name": "Sophia Garcia",
+        "job_title": "UX/UI Designer",
+        "testimonial": "Working at this company has been a dream come true for me. The collaborative environment and emphasis on innovation have allowed me to push the boundaries of design and create meaningful experiences for our users.",
+        "rating": 4.8,
+        "photo": "https://i.ibb.co/T8x2QYT/Screenshot-12-5-2024-12928.jpg",
+        "duration_with_us": "3.5 years"
+    }
+]

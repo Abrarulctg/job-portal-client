@@ -6,6 +6,8 @@ import jobBanner from '../../../assets/job-banner.gif';
 import { Link } from 'react-router-dom';
 import JobCategory from '../JobCategory';
 import HowItWorks from './HowItWorks';
+import Testimonial from '../../shared/Testimonial';
+import Subscribe from '../../shared/Subscribe';
 const Home = () => {
     return (
         <div className='max-w-6xl mx-auto my-5'>
@@ -31,6 +33,13 @@ const Home = () => {
 
             {/* Jobs Category */}
             <JobCategory></JobCategory>
+
+            {/* client Testimonial */}
+            <Testimonial></Testimonial>
+
+            {/* Subscribe */}
+            <Subscribe></Subscribe>
+
         </div>
     );
 };
