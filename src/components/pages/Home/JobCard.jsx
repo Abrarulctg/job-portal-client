@@ -1,25 +1,29 @@
+import { FaEye } from "react-icons/fa";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 
-const JobCard = () => {
+const JobCard = ({ job }) => {
+    console.log(job);
+    const { job_title, posting_date, application_deadline, salary_range, applicants_number, job_description } = job;
     return (
         <div>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-[#2848ff0f] shadow">
                 <div className="card-body">
-                    <h2 className="card-title">Frontend Developer</h2>
+                    <div className="flex justify-between items-center">
+                        <h2 className="card-title">{job_title}</h2>
+                        <small className="flex items-center"><FaEye className="mr-2" /> {applicants_number}</small>
+                    </div>
                     <p className='text-end'>
                         By {"Abrarul Hoque"}
                     </p>
-                    <p className="text-justify my-3">Join our team as a Frontend Developer. Craft captivating user experiences and bring designs to life. Apply now!</p>
+                    <p className="text-justify my-3">{job_description.slice(0, 100)}..</p>
                     <div className="text-start space-y-2">
-                        <p>Posted On: {"12-05-2024"}</p>
-                        <p>Application Deadline: {"20-05-2024"}</p>
-                        <div className="flex flex-col lg:flex-row">
-                            <p className="flex items-center"><FaPhoneVolume className="mr-2" /><a href="tel:01846112525">{"01846112525"}</a></p>
-                            <p><span className="text-[#2847FF] font-bold">{"20000-25000"}</span>/Month</p>
-                        </div>
+                        <p>Posted On: {posting_date}</p>
+                        <p>Application Deadline: {application_deadline}</p>
+                        <p className="flex items-center"><FaPhoneVolume className="mr-2" /><a href="tel:01846112525">{"01846112525"}</a></p>
 
+                        <p className="text-center"><span className="text-[#2847FF] font-bold">{salary_range}</span>/Month</p>
                     </div>
 
                     <div className="card-actions justify-between my-5">

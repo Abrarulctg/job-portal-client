@@ -1,9 +1,16 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import JobCard from './Home/JobCard';
+import { useLoaderData } from 'react-router-dom';
 
 
 const JobCategory = () => {
+    const jobs = useLoaderData();
+    console.log(jobs)
+
+    const onSiteJob = jobs.filter(job => job.job_category === "On Site");
+    console.log(onSiteJob)
+
     return (
         <div className='text-center space-y-4' id="jobsCategory">
             <p className='font-ubuntu text-[#2847FF]'>Jobs Category</p>
@@ -22,8 +29,13 @@ const JobCategory = () => {
                     </TabList>
 
                     <TabPanel>
-                        <h2>On-Site Jobs</h2>
-                        <JobCard></JobCard>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-4'>
+                            {
+                                onSiteJob.map((job, idx) => <JobCard key={idx} job={job}></JobCard>)
+                            }
+                        </div>
+
+
                     </TabPanel>
                     <TabPanel>
                         <h2>Any content 2</h2>

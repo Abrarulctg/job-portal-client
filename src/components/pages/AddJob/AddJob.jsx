@@ -1,11 +1,13 @@
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import { Helmet } from "react-helmet";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddJob = () => {
     const { user } = useContext(AuthContext)
+    const [startDate, setStartDate] = useState(new Date());
 
 
     const successToast = (successMessage) => toast.success(successMessage, {
@@ -162,15 +164,19 @@ const AddJob = () => {
                     {/* form row || Posting date and application_deadline*/}
                     <div className="md:flex gap-4">
                         <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/2">
-                            <input type="date" name="posting_date" className="grow" placeholder="Posting Date" />
+                            {/* <input type="date" name="posting_date" className="grow" placeholder="Posting Date" /> */}
+                            <DatePicker name="posting_date" className='grow' selected={startDate} onChange={(date) => setStartDate(date)} />
+
                         </label>
                         <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/2">
-                            <input type="date" name="application_deadline" className="grow" placeholder="Application Deadline" />
+                            {/* <input type="date" name="application_deadline" className="grow" placeholder="Application Deadline" /> */}
+                            <DatePicker name="application_deadline" className='grow' selected={startDate} onChange={(date) => setStartDate(date)} />
+
                         </label>
 
                     </div>
 
-                    {/* form row || Total Visit, user Email and User Name*/}
+                    {/* form row || ApplicantsNumber, user Email and User Name*/}
                     <div className="md:flex gap-4">
                         <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/3">
                             <input type="number" name="applicants_number" className="grow" defaultValue="0" placeholder="Applicants Number" />
@@ -183,6 +189,7 @@ const AddJob = () => {
                         </label>
                     </div>
                     <input className='btn btn-outline w-full bg-[#2847ff] hover:bg-[#0f27b2] text-white mb-5' type="submit" value="Post Job" />
+
                 </form>
             </div>
         </div>
