@@ -10,7 +10,7 @@ const Header = () => {
         <li className='mr-2'><NavLink to="/allJobs">All Jobs</NavLink></li>
         <li className='mr-2'><NavLink to="/myJobs">My Jobs</NavLink></li> {/* Conditional */}
         <li className='mr-2'><NavLink to="/appliedJobs">Applied Jobs</NavLink></li> {/* Conditional */}
-        <li className='mr-2'><NavLink to="/addJob">Add a Job</NavLink></li> {/* Conditional */}
+        <li className='mr-2'><NavLink to="/postJob">Post a Job</NavLink></li> {/* Conditional */}
         <li className='mr-2'><NavLink to="/blogs">Blogs</NavLink></li>
     </>
 
