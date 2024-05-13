@@ -9,6 +9,9 @@ const JobCategory = () => {
     console.log(jobs)
 
     const onSiteJob = jobs.filter(job => job.job_category === "On Site");
+    const remoteJob = jobs.filter(job => job.job_category === "Remote");
+    const hybridJob = jobs.filter(job => job.job_category === "Hybrid")
+    const partTimeJob = jobs.filter(job => job.job_category === "Part-Time");
     console.log(onSiteJob)
 
     return (
@@ -28,26 +31,37 @@ const JobCategory = () => {
                         <Tab>Part-Time Job</Tab>
                     </TabList>
 
+                    {/* panel for remote job */}
                     <TabPanel>
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-4'>
                             {
                                 onSiteJob.map((job, idx) => <JobCard key={idx} job={job}></JobCard>)
                             }
                         </div>
-
-
                     </TabPanel>
+                    {/* panel for remote job */}
                     <TabPanel>
-                        <h2>Any content 2</h2>
-                        <JobCard></JobCard>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-4'>
+                            {
+                                remoteJob.map((job, idx) => <JobCard key={idx} job={job}></JobCard>)
+                            }
+                        </div>
                     </TabPanel>
+                    {/* panel for hybrid job */}
                     <TabPanel>
-                        <h2>Any content 3</h2>
-                        <JobCard></JobCard>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-4'>
+                            {
+                                hybridJob.map((job, idx) => <JobCard key={idx} job={job}></JobCard>)
+                            }
+                        </div>
                     </TabPanel>
+                    {/* panel for part time job */}
                     <TabPanel>
-                        <h2>Any content 4</h2>
-                        <JobCard></JobCard>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-4'>
+                            {
+                                partTimeJob.map((job, idx) => <JobCard key={idx} job={job}></JobCard>)
+                            }
+                        </div>
                     </TabPanel>
                 </Tabs>
             </div>
