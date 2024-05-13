@@ -14,8 +14,8 @@ const AllJobs = () => {
             </Helmet>
 
 
-            <div className="hero" style={{ backgroundImage: `url(${joBanner})` }}>
-                <div className="hero-overlay bg-opacity-60 py-20"></div>
+            <div className="hero rounded-xl" style={{ backgroundImage: `url(${joBanner})` }}>
+                <div className="hero-overlay bg-opacity-60 py-20 rounded-xl"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
                         <h1 className=' text-2xl md:text-3xl lg:text-5xl font-bold text-center py-24'>All Jobs</h1>
@@ -31,11 +31,6 @@ const AllJobs = () => {
             </div>
 
             {/* All Jobs Card */}
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-4 justify-items-center'>
-                {/* {
-                    jobs.map((job, idx) => <JobCard key={idx} job={job}></JobCard>)
-                } */}
-            </div>
             <div>
                 {
                     jobs.length < 1

@@ -42,11 +42,11 @@ const JobDetails = () => {
                     <p className="my-2 text-justify">{job_description}</p>
                     <div>
                         <h1 className="text-xl font-bold mt-4">Job Responsibilities</h1>
-                        {job_responsibilities.map(responsibility => (<p>{responsibility}</p>))}
+                        <p className="my-2 text-justify">{job_responsibilities}</p>
                     </div>
                     <div>
                         <h1 className="text-xl font-bold mt-4">Why you Work with us</h1>
-                        {why_work_with_us.map(workWithUs => (<p>{workWithUs}</p>))}
+                        <p className="my-2 text-justify">{why_work_with_us}</p>
                     </div>
                     <button className="btn bg-[#2847ff] hover:bg-[#122fd2] text-white my-6 ">Apply this JOb</button>
                 </div>

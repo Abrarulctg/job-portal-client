@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const AddJob = () => {
     const { user } = useContext(AuthContext)
     const [startDate, setStartDate] = useState(new Date());
-
+    const [endDate, setEndDate] = useState(new Date());
 
     const successToast = (successMessage) => toast.success(successMessage, {
         position: "top-right",
@@ -49,9 +49,10 @@ const AddJob = () => {
         const posting_date = form.posting_date.value;
         const application_deadline = form.application_deadline.value;
         const applicants_number = form.applicants_number.value;
+        const salaryRange = form.salaryRange.value;
         const userEmail = form.userEmail.value;
         const userName = form.userName.value;
-        const newJob = { job_banner, job_title, job_category, job_description, job_responsibilities, why_work_with_us, application_deadline, posting_date, applicants_number, userEmail, userName }
+        const newJob = { job_banner, job_title, job_category, job_description, job_responsibilities, why_work_with_us, application_deadline, posting_date, applicants_number, salaryRange, userEmail, userName }
         console.log(newJob)
 
         // validation
@@ -88,6 +89,10 @@ const AddJob = () => {
             errorToast("Please select Application Deadline!");
             return;
         }
+        if (salaryRange === "") {
+            errorToast("Please enter Salary Information!");
+            return;
+        }
 
 
         //send data to server
@@ -102,11 +107,11 @@ const AddJob = () => {
             .then(data => {
                 // console.log(data)
                 if (data.insertedId) {
-                    successToast("Data inserted to MongoDB!")
+                    successToast("Job Posted Successfully!")
                     form.reset();
                 }
                 else {
-                    errorToast("Data not inserted!")
+                    errorToast("Job Post Failed!")
                 }
             })
             .catch(() => {
@@ -163,17 +168,18 @@ const AddJob = () => {
                     </div>
                     {/* form row || Posting date and application_deadline*/}
                     <div className="md:flex gap-4">
-                        <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/2">
+                        <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/3">
                             {/* <input type="date" name="posting_date" className="grow" placeholder="Posting Date" /> */}
                             <DatePicker name="posting_date" className='grow' selected={startDate} onChange={(date) => setStartDate(date)} />
 
                         </label>
-                        <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/2">
+                        <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/3">
                             {/* <input type="date" name="application_deadline" className="grow" placeholder="Application Deadline" /> */}
-                            <DatePicker name="application_deadline" className='grow' selected={startDate} onChange={(date) => setStartDate(date)} />
-
+                            <DatePicker name="application_deadline" className='grow' selected={endDate} onChange={(date) => setEndDate(date)} />
                         </label>
-
+                        <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/3">
+                            <input type="text" name="salaryRange" className="grow" placeholder="Salary Range" />
+                        </label>
                     </div>
 
                     {/* form row || ApplicantsNumber, user Email and User Name*/}
