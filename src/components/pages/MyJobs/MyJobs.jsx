@@ -61,10 +61,10 @@ const MyJobs = () => {
                                                 <tr key={idx} className='hover rounded'>
                                                     <th>{idx + 1}</th>
                                                     <td>{job.job_title}</td>
-                                                    <td>{job.posting_date}</td>
-                                                    <td>{job.application_deadline}</td>
-                                                    <td>{job.salary_range} <small>/Year</small> </td>
-                                                    <td className='flex justify-items-center'>
+                                                    <td className='text-center'>{job.posting_date}</td>
+                                                    <td className='text-center'>{job.application_deadline}</td>
+                                                    <td className='text-center'>{job.salary_range} <small>/Year</small> </td>
+                                                    <td className='flex justify-center'>
                                                         <Link to={`/job/${job._id}`}><button className='btn btn-warning py-1 px-5 mr-2' title='View'><MdOutlinePageview /></button></Link>
                                                         {/* <Link to={`/updateJob/${job._id}`}>Update Job</Link> */}
                                                         <Link to={`/updateJob/${job._id}`}><button className='btn btn-warning' title='Update'><FaPenNib /></button></Link>

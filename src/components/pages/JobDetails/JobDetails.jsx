@@ -5,6 +5,7 @@ const JobDetails = () => {
     const job = useLoaderData();
     console.log(job)
     const { job_title, job_banner, job_category, salary_range, job_description, job_responsibilities, why_work_with_us, posting_date, application_deadline, applicants_number } = job;
+
     return (
         <div className="max-w-6xl mx-auto">
             <Helmet>
@@ -13,7 +14,7 @@ const JobDetails = () => {
             </Helmet>
 
 
-            <div className="hero" style={{ backgroundImage: `url(${job_banner})` }}>
+            <div className="hero" style={{ backgroundImage: `url(${job_banner || "https://i.ibb.co/DCTynTM/all-Job-Banner.jpg"})` }}>
                 <div className="hero-overlay bg-opacity-60 py-20"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
