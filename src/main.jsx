@@ -17,6 +17,7 @@ import AddJob from './components/pages/AddJob/AddJob.jsx';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 import JobDetails from './components/pages/JobDetails/JobDetails.jsx';
 import AllJobs from './components/pages/AllJobs/AllJobs.jsx';
+import MyJobs from './components/pages/MyJobs/MyJobs.jsx';
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
       {
         path: "/allJobs",
         element: <AllJobs></AllJobs>,
+        loader: () => fetch('http://localhost:5000/jobs')
+      },
+      {
+        path: "/myJobs",
+        element: <MyJobs></MyJobs>,
         loader: () => fetch('http://localhost:5000/jobs')
       },
       {

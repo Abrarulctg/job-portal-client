@@ -1,7 +1,7 @@
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import joBanner from '../../../assets/allJobBanner.jpeg';
 import { Helmet } from "react-helmet";
-import JobCard from '../Home/JobCard';
+import { MdOutlinePageview } from "react-icons/md";
 
 const AllJobs = () => {
     const jobs = useLoaderData();
@@ -32,8 +32,53 @@ const AllJobs = () => {
 
             {/* All Jobs Card */}
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-4 justify-items-center'>
-                {
+                {/* {
                     jobs.map((job, idx) => <JobCard key={idx} job={job}></JobCard>)
+                } */}
+            </div>
+            <div>
+                {
+                    jobs.length < 1
+                        ?
+                        <div className='text-center mb-5'>
+                            <h1 className="text-3xl mb-5">You have not added any Jobs yet!</h1>
+                            <Link to="/postJob"><button className='btn btn-success'>Post a Job</button></Link>
+                        </div>
+                        :
+                        <div>
+                            <div className="overflow-x-auto mb-4">
+                                <table className="table">
+                                    {/* head */}
+                                    <thead>
+                                        <tr className='bg-[#b0c4dd9a] text-black text-center rounded-lg'>
+                                            <th></th>
+                                            <th>Job Title</th>
+                                            <th>Job Posting Date</th>
+                                            <th>Application Deadline</th>
+                                            <th>Salary Range</th>
+                                            <th>View Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {/* row 1 */}
+                                        {
+                                            jobs.map((job, idx) =>
+                                                <tr key={idx} className='hover rounded'>
+                                                    <th>{idx + 1}</th>
+                                                    <td>{job.job_title}</td>
+                                                    <td>{job.posting_date}</td>
+                                                    <td>{job.application_deadline}</td>
+                                                    <td>{job.salary_range} <small>/Year</small> </td>
+                                                    <td>
+                                                        <Link to={`/job/${job._id}`}><button className='btn btn-warning py-1 px-5 mr-2' title='View'><MdOutlinePageview /></button></Link>
+                                                    </td>
+                                                </tr>)
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                 }
             </div>
         </div>
