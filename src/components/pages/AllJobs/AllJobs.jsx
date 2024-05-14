@@ -18,7 +18,7 @@ const AllJobs = () => {
                 <div className="hero-overlay bg-opacity-60 py-20 rounded-xl"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
-                        <h1 className=' text-2xl md:text-3xl lg:text-5xl font-bold text-center py-24'>All Jobs</h1>
+                        <h1 className=' text-2xl md:text-3xl lg:text-5xl font-ubuntu font-bold text-center py-24'>All Jobs</h1>
                     </div>
                 </div>
             </div>
@@ -30,13 +30,13 @@ const AllJobs = () => {
                 </label>
             </div>
 
-            {/* All Jobs Card */}
+            {/* All Jobs Table */}
             <div>
                 {
                     jobs.length < 1
                         ?
                         <div className='text-center mb-5'>
-                            <h1 className="text-3xl mb-5">You have not added any Jobs yet!</h1>
+                            <h1 className="text-3xl mb-5 font-ubuntu">You have not added any Jobs yet!</h1>
                             <Link to="/postJob"><button className='btn btn-success'>Post a Job</button></Link>
                         </div>
                         :
@@ -59,6 +59,7 @@ const AllJobs = () => {
                                         {
                                             jobs.map((job, idx) =>
                                                 <tr key={idx} className='hover rounded'>
+                                                    {console.log(typeof job.salary_range)}
                                                     <th>{idx + 1}</th>
                                                     <td>{job.job_title}</td>
                                                     <td>{job.posting_date}</td>

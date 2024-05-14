@@ -19,6 +19,8 @@ import JobDetails from './components/pages/JobDetails/JobDetails.jsx';
 import AllJobs from './components/pages/AllJobs/AllJobs.jsx';
 import MyJobs from './components/pages/MyJobs/MyJobs.jsx';
 import UpdateJob from './components/pages/UpdateJob/UpdateJob.jsx';
+import AppliedJobs from './components/pages/AppliedJobs/AppliedJobs.jsx';
+// import ThemeProvider from './components/ThemeProvider/ThemeProvider.jsx';
 
 
 const router = createBrowserRouter([
@@ -61,6 +63,11 @@ const router = createBrowserRouter([
         element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
       },
       {
+        path: "/appliedJobs",
+        element: <PrivateRoute><AppliedJobs></AppliedJobs> </PrivateRoute>,
+        loader: () => fetch(`http://localhost:5000/appliedJobs`)
+      },
+      {
         path: "/login",
         element: <Login></Login>
       },
@@ -75,8 +82,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    {/* <ThemeProvider> */}
+
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
+
+    {/* </ThemeProvider> */}
   </React.StrictMode>,
 )

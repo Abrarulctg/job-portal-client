@@ -49,10 +49,10 @@ const AddJob = () => {
         const posting_date = form.posting_date.value;
         const application_deadline = form.application_deadline.value;
         const applicants_number = form.applicants_number.value;
-        const salaryRange = form.salaryRange.value;
+        const salary_range = form.salary_range.value;
         const userEmail = form.userEmail.value;
         const userName = form.userName.value;
-        const newJob = { job_banner, job_title, job_category, job_description, job_responsibilities, why_work_with_us, application_deadline, posting_date, applicants_number, salaryRange, userEmail, userName }
+        const newJob = { job_banner, job_title, job_category, job_description, job_responsibilities, why_work_with_us, application_deadline, posting_date, applicants_number, salary_range, userEmail, userName }
         console.log(newJob)
 
         // validation
@@ -89,7 +89,7 @@ const AddJob = () => {
             errorToast("Please select Application Deadline!");
             return;
         }
-        if (salaryRange === "") {
+        if (salary_range === "") {
             errorToast("Please enter Salary Information!");
             return;
         }
@@ -126,7 +126,7 @@ const AddJob = () => {
                 <title>Job Portal | Post a Job</title>
                 <meta name="description" content="Helmet application" />
             </Helmet>
-            <h1 className='bg-[#2848ff29] text-2xl md:text-3xl lg:text-5xl font-bold text-center py-20'>Post a job</h1>
+            <h1 className='bg-[#2848ff29] text-2xl md:text-3xl lg:text-5xl font-bold font-ubuntu text-center py-20'>Post a job</h1>
             <div className='mt-10'>
                 <form onSubmit={handleSubmit}>
                     {/* form row  |  job_banner URL */}
@@ -178,7 +178,7 @@ const AddJob = () => {
                             <DatePicker name="application_deadline" className='grow' selected={endDate} onChange={(date) => setEndDate(date)} />
                         </label>
                         <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/3">
-                            <input type="text" name="salaryRange" className="grow" placeholder="Salary Range" />
+                            <input type="text" name="salary_range" className="grow" placeholder="Salary Range" />
                         </label>
                     </div>
 
