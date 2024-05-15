@@ -81,7 +81,7 @@ const MyJobs = () => {
                     myJobs.length < 1
                         ?
                         <div className='text-center mb-5'>
-                            <h1 className="text-3xl mb-5">You have not added any Jobs yet!</h1>
+                            <h1 className="text-3xl mb-5">You have not Posted any Jobs yet!</h1>
                             <Link to="/postJob"><button className='btn btn-success'>Post a Job</button></Link>
                         </div>
                         :

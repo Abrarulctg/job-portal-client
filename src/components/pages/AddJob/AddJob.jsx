@@ -185,7 +185,7 @@ const AddJob = () => {
                     {/* form row || ApplicantsNumber, user Email and User Name*/}
                     <div className="md:flex gap-4">
                         <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/3">
-                            <input type="number" name="applicants_number" className="grow" defaultValue="0" placeholder="Applicants Number" />
+                            <input type="number" name="applicants_number" className="grow" defaultValue="0" placeholder="Applicants Number" disabled />
                         </label>
                         <label className="input input-bordered flex items-center gap-2 mb-4 form-controll md:w-1/3" disabled>
                             <input type="email" name="userEmail" className="grow" defaultValue={user?.email} placeholder="User Email" disabled />

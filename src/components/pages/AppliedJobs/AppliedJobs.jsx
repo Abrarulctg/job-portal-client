@@ -4,18 +4,19 @@ import { Helmet } from "react-helmet";
 import joBanner from '../../../assets/allJobBanner.jpeg';
 import { Link, useLoaderData } from 'react-router-dom';
 import { MdOutlinePageview } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
 
 
 const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
     const appliedAllJob = useLoaderData(); //fetching all applied jobs
-    console.log(appliedAllJob)
+    // console.log(appliedAllJob)
 
     const [matchedJob, setMatchedJob] = useState([]); // This page will display these job data
 
     const matchedJobWithUser = appliedAllJob.filter(job => job.appliedUser === user.email);
-    console.log(matchedJobWithUser)
-
+    // console.log(matchedJobWithUser)
+    const [displayMatchedJobWithUser, setDisplayMatchedJobWithUser] = useState([]);
 
 
     useEffect(() => {
@@ -28,8 +29,52 @@ const AppliedJobs = () => {
                     return matchedJobWithUser.some(matchedJob => matchedJob.jobId === job._id);
                 });
                 setMatchedJob(matchedJobs);
+                setDisplayMatchedJobWithUser(matchedJobs);
             })
     }, []);
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/jobs') //fetching all job data 
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+
+    //             const matchedJobs = data.filter(job => {
+    //                 if (jobCategoryFilter) {
+    //                     return matchedJobWithUser.some(matchedJob.jobId === job._id && job.job_category === jobCategoryFilter);
+    //                 } else {
+    //                     return matchedJobWithUser.some(matchedJob => matchedJob.jobId === job._id);
+    //                 }
+    //             });
+    //             setMatchedJob(matchedJobs);
+    //         })
+    //         .catch(err => {
+    //             console.log("Error fetching job data:", err);
+    //         })
+    // }, [appliedAllJob, user.email, jobCategoryFilter]);
+
+    const handleJobCategoryFilterChange = (category) => {
+        if (category === "all") {
+            setDisplayMatchedJobWithUser(matchedJob);
+        }
+        if (category === "On Site") {
+            const onSiteJobs = matchedJob.filter(job => job.job_category === "On Site");
+            console.log(onSiteJobs)
+            setDisplayMatchedJobWithUser(onSiteJobs);
+        }
+        if (category === "Remote") {
+            const remoteJobs = matchedJob.filter(job => job.job_category === "Remote");
+            console.log(remoteJobs)
+            setDisplayMatchedJobWithUser(remoteJobs);
+        }
+        if (category === "Part-Time") {
+            const onSiteJobs = matchedJob.filter(job => job.job_category === "Part-Time");
+            console.log(onSiteJobs)
+            setDisplayMatchedJobWithUser(onSiteJobs);
+        }
+
+
+    }
 
     console.log("Showing full job data filtering from applied job and job", matchedJob)
 
@@ -62,7 +107,22 @@ const AppliedJobs = () => {
                         :
                         <div>
                             <div className="overflow-x-auto mb-4">
-                                <table className="table">
+                                {/* Filtering JobCategory */}
+                                <div className="text-center mb-10">
+                                    <div className="dropdown w-40">
+                                        <div tabIndex={0} role="button" className="btn bg-[#2847ff] hover:bg-[#0a29da]  text-white font-semibold flex justify-between"><p>Filter Jobs By:</p> <IoIosArrowDown /></div>
+                                        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                            <li onClick={() => handleJobCategoryFilterChange('all')} className="bg-white text-black"><button>All Categories</button></li>
+                                            <li onClick={() => handleJobCategoryFilterChange('On Site')} className="bg-white text-black"><button>On Site</button></li>
+                                            <li onClick={() => handleJobCategoryFilterChange('Remote')} className="bg-white text-black"><button>Remote</button></li>
+                                            <li onClick={() => handleJobCategoryFilterChange('Part-Time')} className="bg-white text-black"><button>Part-Time</button></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                {/* Displaying filtered job Data */}
+                                <table className="table mb-[100px]">
                                     {/* head */}
                                     <thead>
                                         <tr className='bg-[#b0c4dd9a] text-black text-center rounded-lg'>
@@ -77,21 +137,28 @@ const AppliedJobs = () => {
                                     <tbody>
                                         {/* row 1 */}
                                         {
-                                            matchedJob.map((job, idx) =>
-                                                <tr key={idx} className='hover rounded'>
-                                                    <th>{idx + 1}</th>
-                                                    <td>{job.job_title}</td>
-                                                    <td className='text-center'>{job.posting_date}</td>
-                                                    <td className='text-center'>{job.application_deadline}</td>
-                                                    <td className='text-center'>{job.salary_range} <small>/Year</small> </td>
-                                                    <td className='flex justify-center'>
-                                                        <Link to={`/job/${job._id}`}><button className='btn btn-warning py-1 px-5 mr-2' title='View'><MdOutlinePageview /></button></Link>
-                                                        {/* <Link to={`/updateJob/${job._id}`}>Update Job</Link> */}
-                                                        {/* <Link to={`/updateJob/${job._id}`}><button className='btn btn-warning' title='Update'><FaPenNib /></button></Link> */}
-                                                        {/* <button onClick={() => handleDelete(job._id)} className='btn btn-error text-white ml-2' title='Delete'><RiDeleteBin2Fill /></button> */}
-                                                    </td>
-                                                </tr>)
+                                            displayMatchedJobWithUser.length === 0 ? <div><p className='text-red-500 text-center mb-10 text-xl'>{"No Data Found"}</p></div> : <>
+                                                {
+                                                    displayMatchedJobWithUser.map((job, idx) =>
+                                                        <tr key={idx} className='hover rounded'>
+                                                            <th>{idx + 1}</th>
+                                                            <td>{job.job_title}</td>
+                                                            <td className='text-center'>{job.posting_date}</td>
+                                                            <td className='text-center'>{job.application_deadline}</td>
+                                                            <td className='text-center'>{job.salary_range} <small>/Year</small> </td>
+                                                            <td className='flex justify-center'>
+                                                                <Link to={`/job/${job._id}`}><button className='btn btn-warning py-1 px-5 mr-2' title='View'><MdOutlinePageview /></button></Link>
+                                                                {/* <Link to={`/updateJob/${job._id}`}>Update Job</Link> */}
+                                                                {/* <Link to={`/updateJob/${job._id}`}><button className='btn btn-warning' title='Update'><FaPenNib /></button></Link> */}
+                                                                {/* <button onClick={() => handleDelete(job._id)} className='btn btn-error text-white ml-2' title='Delete'><RiDeleteBin2Fill /></button> */}
+                                                            </td>
+                                                        </tr>)
+                                                }
+                                            </>
                                         }
+
+
+
 
                                     </tbody>
                                 </table>
