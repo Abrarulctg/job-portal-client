@@ -12,7 +12,7 @@ const JobDetails = () => {
     const [appliedJobsData, setAppliedJobsData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/appliedJobs')
+        fetch('https://job-portal-server-red.vercel.app/appliedJobs')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -96,8 +96,8 @@ const JobDetails = () => {
         console.log(appliedJob)
 
         //Send data to the server
-        // fetch('http://localhost:5000/appliedJobs', {
-        fetch('http://localhost:5000/applyJob', {
+        // fetch('https://job-portal-server-red.vercel.app/appliedJobs', {
+        fetch('https://job-portal-server-red.vercel.app/applyJob', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -35,17 +35,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/jobs')
+        loader: () => fetch('https://job-portal-server-red.vercel.app/jobs')
       },
       {
         path: "/allJobs",
         element: <AllJobs></AllJobs>,
-        loader: () => fetch('http://localhost:5000/jobs')
+        loader: () => fetch('https://job-portal-server-red.vercel.app/jobs')
       },
       {
         path: "/myJobs",
         element: <PrivateRoute><MyJobs></MyJobs></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/jobs')
+        loader: () => fetch('https://job-portal-server-red.vercel.app/jobs')
       },
       {
         path: "/postJob",
@@ -54,12 +54,12 @@ const router = createBrowserRouter([
       {
         path: "/updateJob/:id",
         element: <PrivateRoute><UpdateJob></UpdateJob> </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/job/${params.id}`)
+        loader: ({ params }) => fetch(`https://job-portal-server-red.vercel.app/job/${params.id}`)
       },
       {
         path: "/job/:id",
         element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/job/${params.id}`)
+        loader: ({ params }) => fetch(`https://job-portal-server-red.vercel.app/job/${params.id}`)
       },
       {
         path: "/userProfile",
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       {
         path: "/appliedJobs",
         element: <PrivateRoute><AppliedJobs></AppliedJobs> </PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/appliedJobs`)
+        loader: () => fetch(`https://job-portal-server-red.vercel.app/appliedJobs`)
       },
       {
         path: "/login",

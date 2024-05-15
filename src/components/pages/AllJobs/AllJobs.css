@@ -8,6 +8,14 @@
 }
 
 .pagination .selected {
-    background-color: orange;
+    background-color: #2848ff7a;
     border-width: 0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.pagination .notSelected {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 8px;
 }

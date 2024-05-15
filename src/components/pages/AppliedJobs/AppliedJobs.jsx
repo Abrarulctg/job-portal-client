@@ -20,7 +20,7 @@ const AppliedJobs = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/jobs') //fetching all job data 
+        fetch('https://job-portal-server-red.vercel.app/jobs') //fetching all job data 
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -34,7 +34,7 @@ const AppliedJobs = () => {
     }, []);
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/jobs') //fetching all job data 
+    //     fetch('https://job-portal-server-red.vercel.app/jobs') //fetching all job data 
     //         .then(res => res.json())
     //         .then(data => {
     //             console.log(data);

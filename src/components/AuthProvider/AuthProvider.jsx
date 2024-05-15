@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, TwitterAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../Firebase/firebase.config';
+import axios from 'axios';
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -26,10 +27,28 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log("user in the auth state changed.", currentUser);
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
+
             setUser(currentUser);
+            console.log("Current User", currentUser);
             // user.getIdToken().then(token => console.log("TOKEN: ", token)) //undefined
             setLoading(false);
+            // if a user is exist then issue a token
+            if (currentUser) {
+                axios.post('https://job-portal-server-red.vercel.app/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log("token response", res.data);
+                    })
+            }
+            else {
+                axios.post('https://job-portal-server-red.vercel.app/logout', loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
         });
         return () => {
             unSubscribe();

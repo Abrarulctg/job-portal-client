@@ -16,7 +16,7 @@ const MyJobs = () => {
     const [myJobs, setMyJobs] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/jobs')
+        fetch('https://job-portal-server-red.vercel.app/jobs')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -42,7 +42,7 @@ const MyJobs = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/job/${e}`, {
+                    fetch(`https://job-portal-server-red.vercel.app/job/${e}`, {
                         method: "DELETE"
                     }).then(res => res.json())
                         .then(data => {

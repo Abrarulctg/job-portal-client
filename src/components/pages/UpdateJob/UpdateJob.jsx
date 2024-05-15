@@ -99,7 +99,7 @@ const UpdateJob = () => {
 
 
         //send data to server
-        fetch(`http://localhost:5000/job/${job._id}`, {
+        fetch(`https://job-portal-server-red.vercel.app/job/${job._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

@@ -96,7 +96,7 @@ const AddJob = () => {
 
 
         //send data to server
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://job-portal-server-red.vercel.app/jobs', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

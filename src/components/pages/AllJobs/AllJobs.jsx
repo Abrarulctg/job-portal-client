@@ -14,22 +14,46 @@ const AllJobs = () => {
     const [count, setCount] = useState(0);
     const numberOfPages = Math.ceil(count / jobsPerPage);
 
+    const [searchQuery, setSearchQuery] = useState('');
+
+
     const pages = [...Array(numberOfPages).keys()];
     console.log(pages);
     console.log(count);
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/jobCount')
+        fetch('https://job-portal-server-red.vercel.app/jobCount')
             .then(res => res.json())
             .then(data => setCount(data.count))
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/pagedJobs?page=${currentPage}&size=${jobsPerPage}`)
-            .then(res => res.json())
-            .then(data => setJobs(data))
-    }, [currentPage, jobsPerPage]);
+        const url = `https://job-portal-server-red.vercel.app/pagedJobs?page=${currentPage}&size=${jobsPerPage}`
+        if (searchQuery) {
+            fetch(`${url}&search=${searchQuery}`)
+                .then(res => res.json())
+                .then(data => setJobs(data))
+        }
+        else {
+            fetch(url)
+                .then(res => res.json())
+                .then(data => setJobs(data))
+        }
+
+    }, [currentPage, jobsPerPage, searchQuery]);
+
+    // useEffect(() => {
+    //     fetch('https://job-portal-server-red.vercel.app/jobCount')
+    //         .then(res => res.json())
+    //         .then(data => setCount(data.count))
+    // }, [])
+
+    // useEffect(() => {
+    //     fetch(`https://job-portal-server-red.vercel.app/pagedJobs?page=${currentPage}&size=${jobsPerPage}`)
+    //         .then(res => res.json())
+    //         .then(data => setJobs(data))
+    // }, [currentPage, jobsPerPage]);
 
 
     const hangleJobsPerPage = e => {
@@ -51,7 +75,12 @@ const AllJobs = () => {
         }
     }
 
-    console.log(jobs)
+    // console.log(jobs)
+
+    const handleSearch = e => {
+        setSearchQuery(e.target.value);
+        setCurrentPage(0);
+    }
 
     return (
         <div className='max-w-6xl mx-auto'>
@@ -72,7 +101,7 @@ const AllJobs = () => {
             <div className="max-w-xl mx-auto my-10">
                 <label className="input input-bordered input-primary flex items-center gap-2 pr-0">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
-                    <input type="text" className="grow" placeholder="Search job title" />
+                    <input type="text" value={searchQuery} onChange={handleSearch} className="grow" placeholder="Search job title" />
                     <button className='btn btn-primary bg-[#2847FF] lg:px-12'>Search</button>
                 </label>
             </div>
@@ -125,19 +154,27 @@ const AllJobs = () => {
                 }
                 {/* Pagination starting */}
                 <div className='pagination'>
-                    {/* <p>Current Page: {currentPage}</p>   */}
-                    <button onClick={handlePreviousPage}>Previous</button>
-                    {
-                        pages.map(page => <button
-                            onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? "selected" : " "}
-                            key={page} >{page + 1} </button>)
-                    }
-                    <button onClick={handleNextPage}>Next</button>
-                    <select onChange={hangleJobsPerPage} value={jobsPerPage} name="" id="">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                    </select>
+                    <div className="flex flex-col lg:flex-row justify-center lg:justify-between">
+                        <div className='flex items-center'>
+                            <p className='mr-2'>Jobs Per Page: </p>
+                            <div className='border-2 border-[#2848ff40] rounded'>
+                                <select className='bg-[#2848ff20]' onChange={hangleJobsPerPage} value={jobsPerPage} name="" id="">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <button onClick={handlePreviousPage}>Previous</button>
+                            {
+                                pages.map(page => <button
+                                    onClick={() => setCurrentPage(page)}
+                                    className={currentPage === page ? "selected" : "notSelected"}
+                                    key={page} >{page + 1} </button>)
+                            }
+                            <button onClick={handleNextPage}>Next</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
