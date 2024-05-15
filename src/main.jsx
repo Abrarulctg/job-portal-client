@@ -20,6 +20,9 @@ import AllJobs from './components/pages/AllJobs/AllJobs.jsx';
 import MyJobs from './components/pages/MyJobs/MyJobs.jsx';
 import UpdateJob from './components/pages/UpdateJob/UpdateJob.jsx';
 import AppliedJobs from './components/pages/AppliedJobs/AppliedJobs.jsx';
+import Blogs from './components/pages/Blogs/Blogs.jsx';
+import TokenBlog from './components/pages/Blogs/TokenBlog.jsx';
+import ExpressBlog from './components/pages/Blogs/ExpressBlog.jsx';
 // import ThemeProvider from './components/ThemeProvider/ThemeProvider.jsx';
 
 
@@ -72,8 +75,20 @@ const router = createBrowserRouter([
         element: <Login></Login>
       },
       {
+        path: "/blogs",
+        element: <Blogs></Blogs>
+      },
+      {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/TokenBlog",
+        element: <TokenBlog></TokenBlog>
+      },
+      {
+        path: "/expressNest",
+        element: <ExpressBlog></ExpressBlog>
       },
 
     ]

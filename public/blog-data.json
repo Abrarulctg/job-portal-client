@@ -1,0 +1,19 @@
+{
+    "topic": "What is an access token and refresh token? How do they work and where should we store them on the client side?",
+    "blogImage": "https://i.ibb.co/PZb9pBf/BPJjA.png",
+    "description": "This blog explores the concepts of access tokens and refresh tokens in authentication systems, detailing how they function and the importance of securely storing them on the client side.",
+    "author": {
+        "name": "John Doe",
+        "designation": "Senior Software Engineer",
+        "image": "https://example.com/john_doe_image.jpg"
+    },
+    "postDate": "2024-05-20",
+    "blogSpecialText": "Understanding the fundamentals of access tokens and refresh tokens is crucial for building secure authentication systems.",
+    "relatedTags": [
+        "Authentication",
+        "Security",
+        "Web Development"
+    ],
+    "timeToRead": "8 mins",
+    "specialText": "Access tokens and refresh tokens are essential components of token-based authentication systems, commonly employed in web applications and APIs."
+}
