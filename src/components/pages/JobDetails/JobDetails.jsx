@@ -24,10 +24,6 @@ const JobDetails = () => {
 
 
 
-
-
-
-
     const currentDate = new Date();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
@@ -62,7 +58,6 @@ const JobDetails = () => {
 
 
 
-
     const handleApplyJob = e => {
         e.preventDefault();
 
@@ -92,6 +87,10 @@ const JobDetails = () => {
         const jobId = _id;
         const appliedUser = user.email;
 
+        if (resumeLink === "") {
+            errorToast("Please provide a Resume Link!");
+            return;
+        }
         const appliedJob = { jobId, job_title, appliedUser, resumeLink }
         console.log(appliedJob)
 
