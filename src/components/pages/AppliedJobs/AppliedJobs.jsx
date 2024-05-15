@@ -148,9 +148,6 @@ const AppliedJobs = () => {
                                                             <td className='text-center'>{job.salary_range} <small>/Year</small> </td>
                                                             <td className='flex justify-center'>
                                                                 <Link to={`/job/${job._id}`}><button className='btn btn-warning py-1 px-5 mr-2' title='View'><MdOutlinePageview /></button></Link>
-                                                                {/* <Link to={`/updateJob/${job._id}`}>Update Job</Link> */}
-                                                                {/* <Link to={`/updateJob/${job._id}`}><button className='btn btn-warning' title='Update'><FaPenNib /></button></Link> */}
-                                                                {/* <button onClick={() => handleDelete(job._id)} className='btn btn-error text-white ml-2' title='Delete'><RiDeleteBin2Fill /></button> */}
                                                             </td>
                                                         </tr>)
                                                 }

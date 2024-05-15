@@ -2,10 +2,57 @@ import { Link, useLoaderData } from 'react-router-dom';
 import joBanner from '../../../assets/allJobBanner.jpeg';
 import { Helmet } from "react-helmet";
 import { MdOutlinePageview } from "react-icons/md";
+import { useEffect, useState } from 'react';
+import './AllJobs.css';
 
 const AllJobs = () => {
-    const jobs = useLoaderData();
+    // const allJjob = useLoaderData();
+    const [jobs, setJobs] = useState([]);
+    const [jobsPerPage, setJobsPerPage] = useState(5);
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const [count, setCount] = useState(0);
+    const numberOfPages = Math.ceil(count / jobsPerPage);
+
+    const pages = [...Array(numberOfPages).keys()];
+    console.log(pages);
+    console.log(count);
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/jobCount')
+            .then(res => res.json())
+            .then(data => setCount(data.count))
+    }, [])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/pagedJobs?page=${currentPage}&size=${jobsPerPage}`)
+            .then(res => res.json())
+            .then(data => setJobs(data))
+    }, [currentPage, jobsPerPage]);
+
+
+    const hangleJobsPerPage = e => {
+        const value = parseInt(e.target.value);
+        setJobsPerPage(value);
+        setCurrentPage(0);
+    }
+
+
+    const handlePreviousPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1)
+        }
+    }
+
+    const handleNextPage = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1)
+        }
+    }
+
     console.log(jobs)
+
     return (
         <div className='max-w-6xl mx-auto'>
             <Helmet>
@@ -36,7 +83,7 @@ const AllJobs = () => {
                     jobs.length < 1
                         ?
                         <div className='text-center mb-5'>
-                            <h1 className="text-3xl mb-5 font-ubuntu">You have not added any Jobs yet!</h1>
+                            <h1 className="text-3xl mb-5 font-ubuntu">Currently No Jobs Available!</h1>
                             <Link to="/postJob"><button className='btn btn-success'>Post a Job</button></Link>
                         </div>
                         :
@@ -59,7 +106,7 @@ const AllJobs = () => {
                                         {
                                             jobs.map((job, idx) =>
                                                 <tr key={idx} className='hover rounded'>
-                                                    {console.log(typeof job.salary_range)}
+                                                    {/* {console.log(typeof job.salary_range)} */}
                                                     <th>{idx + 1}</th>
                                                     <td>{job.job_title}</td>
                                                     <td>{job.posting_date}</td>
@@ -76,6 +123,22 @@ const AllJobs = () => {
                             </div>
                         </div>
                 }
+                {/* Pagination starting */}
+                <div className='pagination'>
+                    {/* <p>Current Page: {currentPage}</p>   */}
+                    <button onClick={handlePreviousPage}>Previous</button>
+                    {
+                        pages.map(page => <button
+                            onClick={() => setCurrentPage(page)}
+                            className={currentPage === page ? "selected" : " "}
+                            key={page} >{page + 1} </button>)
+                    }
+                    <button onClick={handleNextPage}>Next</button>
+                    <select onChange={hangleJobsPerPage} value={jobsPerPage} name="" id="">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
             </div>
         </div>
     );
